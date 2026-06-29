@@ -16,15 +16,17 @@ app.post("/notes",(req,res)=>{
     console.log(req.body);
 
     notes.push(req.body)
-    console.log(notes);
+    res.send("note created")
     
-    res.send("notes created")
 })
 
 // get /notes
 // to fetch data
-app.get("/notes", (req, res) => {
+app.get("/notes",(req,res)=>{
+    console.log(notes);
+
     res.send(notes)
+    
 })
 
 // delete /:index
@@ -32,17 +34,21 @@ app.get("/notes", (req, res) => {
 // params milta hai 
 app.delete("/notes/:index",(req,res)=>{
     delete notes[req.params.index]
-    res.send("notes delete successfully")
+
+    res.send("note deteleted")
 })
 
 // patch /:index
 // notes me se kuch part update krne ke liye
-
 app.patch("/notes/:index",(req,res)=>{
-    notes[req.params.index].des =req.body.des
+    notes[req.params.index].des = req.body.des
 
-    res.send("note modified successfully")
+    res.send("note modified")
 })
+
+
+
+
 
 
 module.exports = app
