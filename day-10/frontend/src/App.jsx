@@ -5,7 +5,7 @@ const App = () => {
 
   const [allnotes, setallnotes] = useState([])
 const fetchNotes =async ()=>{
-  const notes = await axios.get("/notes")
+  const notes = await axios.get("https://backend-class-fbun.onrender.com/api/notes")
   setallnotes(notes.data.notes)  
 }
 
