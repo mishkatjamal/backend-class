@@ -5,7 +5,7 @@ const App = () => {
 
   const [allnotes, setallnotes] = useState([])
 const fetchNotes =async ()=>{
-  const notes = await axios.get("http://localhost:3000/api/notes")
+  const notes = await axios.get("https://backend-class-fbun.onrender.com/notes")
   setallnotes(notes.data.notes)  
 }
 
@@ -22,7 +22,7 @@ function submitHandler(e){
   e.preventDefault()
   const {title,description,image} = e.target.elements
 
-  axios.post("http://localhost:3000/api/notes",{
+  axios.post("https://backend-class-fbun.onrender.com/api/notes",{
     title:title.value,
     description:description.value,
     image:image.value
@@ -37,7 +37,7 @@ function submitHandler(e){
 
 // * DELETE
 function deleteHandler(noteId){
-  axios.delete("http://localhost:3000/api/notes/"+noteId)
+  axios.delete("https://backend-class-fbun.onrender.com/api/notes/"+noteId)
   .then((res)=>{
     console.log(res.data);
     fetchNotes()
@@ -47,7 +47,7 @@ function deleteHandler(noteId){
 // * PATCH
 // * update note description
 function updateHandler(noteId,description){
-axios.patch("http://localhost:3000/api/notes/"+noteId,{description:description})
+axios.patch("https://backend-class-fbun.onrender.com/api/notes/"+noteId,{description:description})
 .then((res)=>{
   console.log(res.data);
   fetchNotes()
