@@ -6,6 +6,10 @@ const App = () => {
   const [allnotes, setallnotes] = useState([])
 const fetchNotes =async ()=>{
   const notes = await axios.get("https://backend-class-fbun.onrender.com/api/notes")
+  .then((res)=>{
+    console.log(res.data);
+    
+  })
   setallnotes(notes.data.notes)  
 }
 
@@ -71,7 +75,7 @@ axios.patch("https://backend-class-fbun.onrender.com/api/notes/"+noteId,{descrip
     </div>
 
     <div className='w-full flex flex-wrap gap-5 p-5'>
-      {allnotes.map((elem,indx)=>{
+      {allnotes?.map((elem,indx)=>{
         return <div key={indx} className='w-1/4 bg-white p-3 text-black rounded-2xl shadow-2xl border border-gray-300'>
           {/* images */}
           <img src={elem.image} 
