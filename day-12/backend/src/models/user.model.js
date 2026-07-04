@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         unique:[true,"email already exist"]
     },
-    password:String
+    password:String,
 })
 
 const userModel = mongoose.model("users",userSchema)
